@@ -1,14 +1,10 @@
 body {
     font-family: 'Cabin';
     padding: 20px 60px;
-    background: #101010;
+    background: rgba(255, 255, 255, 0.801);
 }
 
 a {
     text-decoration: none;
-    color: white;
-}
-
-h2 {
-    color: white;
+    color: black;
 }
