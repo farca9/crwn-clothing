@@ -54,3 +54,35 @@ provider.setCustomParameters({prompt:'select_account'});
 export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
+
+export const convertCollectionSnapshotToMap = (collections) => {
+    const transformedCollections = collections.docs.map(doc => {
+        const {title, items} = doc.data();
+
+        return {
+            routeName: encodeURI(title.toLowerCase()),
+            id: doc.id,
+            title,
+            items
+        }
+    });
+
+    //Converts array to object map
+    return transformedCollections.reduce((accumulator, collection) =>{
+        accumulator[collection.title.toLowerCase()] = collection;
+        return accumulator;
+    }, {})
+}
+
+/*export const addCollectionAndDocuments = async (collectionKey, documentsToAdd) => {
+    const collectionRef = firestore.collection(collectionKey);
+
+    const batch = firestore.batch();
+
+    documentsToAdd.forEach((document) => {
+        const newDocRef = collectionRef.doc();
+        batch.set(newDocRef, document);
+    });
+
+    return await batch.commit();
+}*/
