@@ -55,7 +55,7 @@ export const signInWithGoogle = () => auth.signInWithPopup(provider);
 
 export default firebase;
 
-export const convertCollectionSnapshotToMap = (collections) => {
+export const convertCollectionsSnapshotToMap = (collections) => {
     const transformedCollections = collections.docs.map(doc => {
         const {title, items} = doc.data();
 
